@@ -78,4 +78,4 @@ app.post('/api/chat', express.json(), async (req, res) => {
 
 // Static files
 app.use(express.static('public'));
-app.listen(3000, () => console.log('Server running on port 3000'));
+app.listen(3000, () => console.log('Server running on port http://localhost:3000'));

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Chat with Gemini</h2>
+        <p id="username">Loading user...</p>
+
+        <div class="chatbox" id="messages"></div>
+
+        <div class="input-area">
+            <input type="text" id="messageInput" placeholder="Type a message..." />
+            <button id="sendButton" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Fetch user data from the backend
+        async function fetchUser() {
+            const response = await fetch('/api/user');
+            const data = await response.json();
+            document.getElementById('username').textContent = `Logged in as ${data.displayName}`;
+        }
+        fetchUser();
+
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const sendButton = document.getElementById('sendButton');
+            const message = input.value.trim();
+            if (!message) return;
+            input.value = '';
+            sendButton.disabled = true; // Disable send button
+            sendButton.textContent = "generating...";
+
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `<div class="user-message"><strong>You:</strong> ${message}</div>`;
+
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message })
+            });
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let botMessageDiv = document.createElement('div');
+            botMessageDiv.className = 'bot-message';
+            botMessageDiv.innerHTML = '<strong>Bot:</strong> ';
+            messagesDiv.appendChild(botMessageDiv);
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                botMessageDiv.innerHTML += decoder.decode(value);
+            }
+            sendButton.disabled = false; // Re-enable send button
+            sendButton.textContent = "Send";
+        }
+    </script>
+</body>
+</html>

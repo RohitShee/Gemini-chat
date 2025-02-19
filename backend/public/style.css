@@ -1,0 +1,143 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+}
+
+/* login page */
+.login-container {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+.login-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.login-container p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Login Button */
+.login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4285F4;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.login-btn img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.login-btn:hover {
+    background: #357ae8;
+}
+
+/* Chat Container */
+.chat-container {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+}
+
+/* Title */
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* User Info */
+#username {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Chatbox */
+.chatbox {
+    height: 250px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background: #f9f9f9;
+}
+
+/* Chat Messages */
+.user-message, .bot-message {
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background: #4facfe;
+    color: white;
+    text-align: right;
+}
+
+.bot-message {
+    background: #eee;
+    color: #333;
+    text-align: left;
+}
+
+/* Input Area */
+.input-area {
+    display: flex;
+    gap: 5px;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.input-area button {
+    background: #4facfe;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.input-area button:hover {
+    background: #357ae8;
+}

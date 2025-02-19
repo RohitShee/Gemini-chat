@@ -1,0 +1,13 @@
+{
+  "name": "buddhi_yantra_task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+   "build": "npm install --prefix backend",
+    "start" : "npm run start --prefix backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
